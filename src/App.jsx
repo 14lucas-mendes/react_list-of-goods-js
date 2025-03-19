@@ -24,18 +24,16 @@ export const App = () => {
   const IS_LIGHT_ACTIVE_SORT_LENGTH = 'length';
   const IS_LIGHT_ACTIVE_SORT_REVERSE = 'reverse';
 
-  const visibleGoods = [...goodsFromServer];
-
-  const sortGoodstAlphabetical = () => {
-    const alphabetical = [...visibleGoods.sort()];
+  const sortGoodstAlphabetically = () => {
+    const alphabetical = [...prepareGoods.sort()];
 
     setPrepareGoods(alphabetical);
     setIsSorted(true);
     setActiveButton('alphabetical');
   };
 
-  const sorGoodstLength = () => {
-    const length = visibleGoods.sort(
+  const sortGoodstLength = () => {
+    const length = prepareGoods.sort(
       (goods1, goods2) => goods1.length - goods2.length,
     );
 
@@ -44,8 +42,8 @@ export const App = () => {
     setActiveButton('length');
   };
 
-  const sortGoodsByReverse = () => {
-    const reverse = visibleGoods.sort().reverse();
+  const reverseGoods = () => {
+    const reverse = prepareGoods.sort().reverse();
 
     setPrepareGoods([...reverse]);
     setIsSorted(true);
@@ -64,21 +62,21 @@ export const App = () => {
         <button
           type="button"
           className={`button is-info ${activeButton === IS_LIGHT_ACTIVE_SORT_ALPHABETICAL ? '' : 'is-light'}`}
-          onClick={sortGoodstAlphabetical}
+          onClick={sortGoodstAlphabetically}
         >
           Sort alphabetically
         </button>
         <button
           type="button"
           className={`button is-info ${activeButton === IS_LIGHT_ACTIVE_SORT_LENGTH ? '' : 'is-light'}`}
-          onClick={sorGoodstLength}
+          onClick={sortGoodstLength}
         >
           Sort by length
         </button>
         <button
           type="button"
           className={`button is-info ${activeButton === IS_LIGHT_ACTIVE_SORT_REVERSE ? '' : 'is-light'}`}
-          onClick={sortGoodsByReverse}
+          onClick={reverseGoods}
         >
           Reverse
         </button>
